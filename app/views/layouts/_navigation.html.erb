@@ -12,7 +12,16 @@
       <a class="item">Sign up</a>
     </div>
   </div>
-  <div class="item">
-    <div class="ui primary button">Sign Up</div>
-  </div>
+
+  <% if logged_in? %>
+    <%= link_to "Log out", logout_path, class: "item", data: { "turbo-method": :delete } %>
+  <% else %>
+    <div class="item">
+      <%= link_to "Log in", login_url, class: "ui primary button" %>
+    </div>
+    <div class="item">
+      <%= link_to "Sign Up", signup_path, class: "ui primary button" %>
+    </div>
+  <% end %>
+
 </div>
